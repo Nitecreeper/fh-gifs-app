@@ -2,6 +2,8 @@
     <h3 class="text-light">Gifs App</h3>
     <hr class="text-white">
     <div class="list-group list-reset">
-        <button class="list-group-item list-group-item-action"> Something </button>
+        <button class="list-group-item list-group-item-action" *ngFor="let tag of tagsHistory"> 
+            {{tag | titlecase}} 
+        </button>
     </div>
 </div>
