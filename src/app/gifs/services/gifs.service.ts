@@ -17,7 +17,6 @@ export class GifsService {
     constructor( private http: HttpClient){
         this.loadLocalStorage();
         console.warn(' *** Gifs Service Ready *** ');
-        this.searchTag(this._tagsHistory[0]);
     }
     
     get tagsHistory(){
@@ -51,7 +50,13 @@ export class GifsService {
 
         this._tagsHistory = JSON.parse(localStorage.getItem(this.localStorageKey)!);
 
+        if( this._tagsHistory.length === 0 ){
+            console.log('Empty localStorage');
+            return;            
+        }
+
         console.log('localStorage loaded: ', this._tagsHistory);
+        this.searchTag(this._tagsHistory[0]);
         
     }
 
@@ -73,6 +78,11 @@ export class GifsService {
                 
             });
         
+    }
+
+    public clearHistory(): void{
+        this._tagsHistory = [];
+        this.saveLocalStorage();
     }
 
 }
