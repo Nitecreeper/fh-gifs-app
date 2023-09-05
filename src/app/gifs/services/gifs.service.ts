@@ -11,12 +11,17 @@ export class GifsService {
     private _tagsHistory: string[] = [];
     private apiKey: string = 'rG3YC86bxQqm4Zi4jIUem1wQ8aUKAuaG';
     private serviceUrl: string = 'https://api.giphy.com/v1/gifs';
+    private _limit: number = 4;
 
     constructor( private http: HttpClient){}
 
     
     get tagsHistory(){
         return [...this._tagsHistory];
+    }
+
+    set limit(limit: number){
+        this._limit = limit;
     }
 
     private organizeHistory(tag: string){
@@ -39,7 +44,7 @@ export class GifsService {
         const params = new HttpParams()
             .set('api_key', this.apiKey)
             .set('q', tag)
-            .set('limit', '12')
+            .set('limit', this._limit.toString())
 
         this.http.get<SearchResponse>(`${this.serviceUrl}/search`, {params})
             .subscribe( (resp) => {

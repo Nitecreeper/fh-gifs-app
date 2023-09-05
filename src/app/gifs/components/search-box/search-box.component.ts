@@ -11,6 +11,8 @@ export class SearchBoxComponent {
   @ViewChild('txtTagInput')
   public tagInput!: ElementRef<HTMLInputElement>;
 
+  public options = [4,12,24,48]
+
   constructor( private gifsService: GifsService){}
 
   searchTag(): void{
@@ -20,6 +22,13 @@ export class SearchBoxComponent {
 
     this.tagInput.nativeElement.value = '';
     
+  }
+
+  setLimit(event: any): void {
+
+    if(event.target){
+      this.gifsService.limit = event.target.value;
+    }
   }
 
 }
