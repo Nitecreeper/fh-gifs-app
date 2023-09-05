@@ -11,7 +11,7 @@ export class SearchBoxComponent {
   @ViewChild('txtTagInput')
   public tagInput!: ElementRef<HTMLInputElement>;
 
-  public options = [4,12,24,48]
+  public options = [8,12,24,48]
 
   constructor( private gifsService: GifsService){}
 

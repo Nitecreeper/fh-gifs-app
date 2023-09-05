@@ -19,5 +19,9 @@ export class SidebarComponent {
     this.gifsService.searchTag(tag);
   }
 
+  clearHistory(): void{
+    this.gifsService.clearHistory();
+  }
+
 
 }

@@ -5,5 +5,5 @@
 <select name="gifsAmount" id="gifsAmount" class="form-control" (change)="setLimit($event)">
     <option [value]="option" *ngFor="let option of options">{{option.toString()}}</option>
 </select>
-
+<br>
 <button class="btn btn-primary" (click)="searchTag()">Buscar</button>
