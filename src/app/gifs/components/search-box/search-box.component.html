@@ -1,2 +1,9 @@
 <h5> Buscar: </h5>
 <input type="text" class="form-control" placeholder="Buscar gifs..." (keyup.enter)="searchTag()" #txtTagInput>
+
+<label for="gifsAmount">Cantidad:</label>
+<select name="gifsAmount" id="gifsAmount" class="form-control" (change)="setLimit($event)">
+    <option [value]="option" *ngFor="let option of options">{{option.toString()}}</option>
+</select>
+
+<button class="btn btn-primary" (click)="searchTag()">Buscar</button>
